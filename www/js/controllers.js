@@ -1,7 +1,14 @@
-angular.module('starter.controllers', [])
+angular.module('starter.controllers', ['LocalStorageModule'])
 
-.controller('TestsCtrl', function($scope, Tests) {
+.config(function(localStorageServiceProvider){
+  localStorageServiceProvider.setPrefix('raspi-lab');
+  // localStorageServiceProvider.setStorageCookieDomain('example.com');
+  // localStorageServiceProvider.setStorageType('sessionStorage');
+})
+
+.controller('TestsCtrl', function($scope, localStorageService, Tests) {
   $scope.tests = Tests.all();
+  $scope.urlPrefix = localStorageService.get('urlPrefix') || 'http://192.168.0.94:3000/'
 })
 
 .controller('TestDetailControl', function($scope, $stateParams, Tests) {
@@ -27,7 +34,7 @@ angular.module('starter.controllers', [])
   $scope.friend = Friends.get($stateParams.friendId);
 })
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope, localStorageService) {
   $scope.settings = {
     enableFriends: true
   };
