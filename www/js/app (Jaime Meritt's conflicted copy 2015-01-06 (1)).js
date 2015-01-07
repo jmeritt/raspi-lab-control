@@ -53,7 +53,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       views: {
         'tab-tests': {
           templateUrl: 'templates/test-detail.html',
-          controller: 'TestDetailControl'
+          controller: 'TestDetailCtrl'
         }
       }
     })

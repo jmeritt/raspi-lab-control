@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
   $scope.tests = Tests.all();
 })
 
-.controller('TestDetailCtrl', function($scope, $stateParams, Tests) {
+.controller('TestDetailControl', function($scope, $stateParams, Tests) {
   $scope.test = Tests.get($stateParams.testId);
 })
 
